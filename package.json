@@ -1,0 +1,18 @@
+{
+  "name": "simple-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "serverless": "^2.51.2"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "volta": {
+    "node": "14.15.0",
+    "yarn": "1.22.10"
+  }
+}

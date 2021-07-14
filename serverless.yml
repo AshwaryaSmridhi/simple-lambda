@@ -1,0 +1,17 @@
+service: simple-project
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  memorySize: 1024
+  stage: ${opt:stage, 'dev'}
+  region: ap-southeast-2
+
+functions: 
+  check-valid-string:
+    handler: src/handlers/check-valid-string.handler
+    events: 
+      - http: 
+          path: check/dog/breed/{breed}
+          method: get
+          cors: true
