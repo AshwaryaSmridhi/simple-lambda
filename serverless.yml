@@ -55,4 +55,4 @@ resources:
         Period: 60
         EvaluationPeriods: 1
         AlarmActions:
-          - Fn::GetAtt: [ 'NotifySlackSns', 'Arn' ]
+          - !Ref NotifySlackSns

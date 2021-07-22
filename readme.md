@@ -3,6 +3,7 @@ Steps for setup:
 - Setup aws cli
 - Setup aws profiles
 - Install serverless globally 
+- Follow these steps to enable API Gateway Logs: https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-cloudwatch-logs/
 
 Autheticate into aws account
  - export AWS_PROFILE='nd-train-general'
@@ -18,3 +19,8 @@ Postman:
 
 Note: 
 - Get rid of volta
+
+
+To do:
+- Create SNS by click ops
+- Integrate with slack
