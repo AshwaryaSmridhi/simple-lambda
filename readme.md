@@ -4,13 +4,6 @@ Steps for setup:
 - Setup aws profiles
 - Install serverless globally 
 
-Note: 
-- Get rid of volta
-- http endpoint - Post man install, hit on the browser 
-
-Postman: 
-- add access and id tokens (aws)
-
 Autheticate into aws account
  - export AWS_PROFILE='nd-train-general'
  OR (Recommended)
@@ -19,3 +12,9 @@ Autheticate into aws account
 Steps to deploy: 
 sls package
 sls deploy
+
+Postman: 
+- add access and id tokens (aws)
+
+Note: 
+- Get rid of volta

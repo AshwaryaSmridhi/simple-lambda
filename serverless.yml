@@ -9,9 +9,50 @@ provider:
 
 functions: 
   check-valid-string:
-    handler: src/handlers/check-valid-string.handler
+    handler: src/handlers/check-valid-string/check-valid-string.handler
     events: 
       - http: 
           path: check/dog/breed/{breed}
           method: get
           cors: true
+  
+  slack-notifications: 
+    handler: src/handlers/slack-notification/slack-notification.handler
+    events: 
+      - sns: 
+          arn: !Ref NotifySlackSns
+          topicName: ${self:service}-${self:provider.stage}-NotifySlackSns
+
+resources: 
+  Resources:
+    NotifySlackSns:
+      Type: AWS::SNS::Topic
+      Properties: 
+        TopicName: ${self:service}-${self:provider.stage}-NotifySlackSns
+
+    CheckValidStringErrorFilter: 
+      Type: AWS::Logs::MetricFilter
+      Properties:
+        LogGroupName:
+          Ref: 'CheckDashvalidDashstringLogGroup'
+        FilterPattern: '{$.level = "Error"}'
+        MetricTransformations:
+          -
+            MetricValue: '1'
+            MetricNamespace: 'LogMetrics'
+            MetricName: '${self:service}-${self:provider.stage}-CheckValidStringError'
+
+    CheckValidStringErrorAlarm:
+      Type: AWS::CloudWatch::Alarm
+      Properties:
+        AlarmName: ${self:service}-${self:provider.stage}-CheckValidStringError
+        AlarmDescription: Lambda alarm
+        Namespace: LogMetrics
+        MetricName: ${self:service}-${self:provider.stage}-CheckValidStringError
+        Statistic: Sum
+        ComparisonOperator: GreaterThanThreshold
+        Threshold: 0
+        Period: 60
+        EvaluationPeriods: 1
+        AlarmActions:
+          - Fn::GetAtt: [ 'NotifySlackSns', 'Arn' ]
