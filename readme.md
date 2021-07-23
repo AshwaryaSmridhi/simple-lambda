@@ -19,6 +19,9 @@ Postman:
 
 Note: 
 - Get rid of volta
+- Acknowledgement of traditional owners of the land
+
+
 
 
 To do:
