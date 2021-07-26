@@ -45,7 +45,7 @@ resources:
       Properties:
         LogGroupName:
           Ref: 'CheckDashvalidDashstringLogGroup'
-        FilterPattern: '{$.level = "Error"}'
+        FilterPattern: '{$.level = "error"}'
         MetricTransformations:
           -
             MetricValue: '1'

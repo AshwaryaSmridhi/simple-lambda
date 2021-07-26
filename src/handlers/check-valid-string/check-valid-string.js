@@ -17,14 +17,14 @@ module.exports.handler = (event, context, callback) => {
 
     return callback(null, response)
   } catch (err) {
-    console.log('Error: ', err);
+    console.log(JSON.stringify({ level: 'error', detail: err.message }));
 
     const response = {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': true
       },
-      statusCode: 404,
+      statusCode: 500,
       body: `Error occured ${err}`
     };
 
