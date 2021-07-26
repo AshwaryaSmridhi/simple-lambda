@@ -6,8 +6,9 @@ Steps for setup:
 - Follow these steps to enable API Gateway Logs: https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-cloudwatch-logs/
 
 Autheticate into aws account
- - export AWS_PROFILE='nd-train-general'
+ - export AWS_PROFILE='ndo-general'
  OR (Recommended)
+ - cat ~/.aws/config //to see what profiles you have
  - sls deploy --aws-profile <profile-name>
 
 Steps to deploy: 

@@ -1,5 +1,8 @@
 service: simple-project
 
+plugins:
+  - serverless-iam-roles-per-function
+
 provider:
   name: aws
   runtime: nodejs14.x
@@ -18,9 +21,16 @@ functions:
   
   slack-notifications: 
     handler: src/handlers/slack-notification/slack-notification.handler
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - sns:Publish
+        Resource:
+          - Ref: NotifySlackSns
     events: 
       - sns: 
-          arn: !Ref NotifySlackSns
+          arn: 
+            Ref: NotifySlackSns
           topicName: ${self:service}-${self:provider.stage}-NotifySlackSns
 
 resources: 
@@ -55,4 +65,4 @@ resources:
         Period: 60
         EvaluationPeriods: 1
         AlarmActions:
-          - !Ref NotifySlackSns
+          - Ref: NotifySlackSns
