@@ -27,6 +27,8 @@ functions:
           - sns:Publish
         Resource:
           - Ref: NotifySlackSns
+    environment: 
+      SLACK_WEBHOOK_URL: ${ssm:/error-slack-webhook-url~true} #Make sure to create the secret first. Note true means you want to decrypt value
     events: 
       - sns: 
           arn: 
