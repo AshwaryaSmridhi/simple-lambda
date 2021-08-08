@@ -33,17 +33,16 @@ resources:
       Properties: 
         TopicName: ${self:service}-${self:provider.stage}-NotifySlackSns
 
-    CheckValidStringErrorAlarm:
+    GenerateDogName5xxErrorAlarm:
       Type: AWS::CloudWatch::Alarm
       Properties:
         AlarmName: ${self:service}-${self:provider.stage}-GenerateDogName
         AlarmDescription: Lambda alarm
-        Namespace: AWS/Lambda
-        MetricName: Errors
+        Namespace: AWS/ApiGateway
+        MetricName: 5XXError
         Dimensions:
-          - Name: FunctionName
-            Value: 
-              Ref: GenerateDashdogDashnameLambdaFunction
+          - Name: ApiName
+            Value: ${self:provider.stage}-${self:service}
         Statistic: Sum
         ComparisonOperator: GreaterThanThreshold
         Threshold: 0
@@ -52,25 +51,25 @@ resources:
         AlarmActions:
           - Ref: NotifySlackSns
 
-    # CheckValidStringErrorFilter: 
+    # GenerateDogNameErrorFilter: 
     #   Type: AWS::Logs::MetricFilter
     #   Properties:
     #     LogGroupName:
-    #       Ref: 'CheckDashvalidDashstringLogGroup'
+    #       Ref: 'GenerateDashdogDashnameLogGroup'
     #     FilterPattern: '{$.level = "error"}'
     #     MetricTransformations:
     #       -
     #         MetricValue: '1'
     #         MetricNamespace: 'LogMetrics'
-    #         MetricName: '${self:service}-${self:provider.stage}-CheckValidStringError'
+    #         MetricName: '${self:service}-${self:provider.stage}-GenerateDogNameError'
 
-    # CheckValidStringErrorAlarm:
+    # GenerateDogNameErrorAlarm:
     #   Type: AWS::CloudWatch::Alarm
     #   Properties:
-    #     AlarmName: ${self:service}-${self:provider.stage}-CheckValidStringError
+    #     AlarmName: ${self:service}-${self:provider.stage}-GenerateDogNameError
     #     AlarmDescription: Lambda alarm
     #     Namespace: LogMetrics
-    #     MetricName: ${self:service}-${self:provider.stage}-CheckValidStringError
+    #     MetricName: ${self:service}-${self:provider.stage}-GenerateDogNameError
     #     Statistic: Sum
     #     ComparisonOperator: GreaterThanThreshold
     #     Threshold: 0

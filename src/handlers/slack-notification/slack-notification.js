@@ -10,7 +10,9 @@ module.exports.handler = (snsEvent) => {
   // Send the notification
   (async () => {
     await webhook.send({
-      text: "Whoopsie!! Looks like your lambda had an error. Have a cookie!",
+      title: 'Error',
+      text: 'Whoopsie!! Looks like your lambda had an error. Have a cookie!',
+      icon_emoji: ':speak-no-evil:'
     });
   })();
 
