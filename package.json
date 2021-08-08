@@ -5,14 +5,20 @@
   "main": "handler.js",
   "scripts": {
     "ci": "yarn install --frozen-lockfile",
-    "package": "$(yarn bin)/sls package"
+    "package": "$(yarn bin)/sls package --aws-profile <put your profile name>",
+    "deploy": "$(yarn bin)/sls deploy --aws-profile <put your profile name>"
   },
   "dependencies": {
-    "@slack/webhook": "^6.0.0"
+    "@slack/webhook": "^6.0.0",
+    "dog-names": "^2.0.0",
+    "lodash.shuffle": "^4.2.0",
+    "pokemon": "^2.2.0",
+    "string-hash": "^1.1.3",
+    "superheroes": "^3.0.0",
+    "supervillains": "^3.0.0"
   },
   "devDependencies": {
-    "serverless": "^2.51.2",
-    "serverless-iam-roles-per-function": "^3.2.0"
+    "serverless": "^2.51.2"
   },
   "author": "",
   "license": "UNLICENSED",

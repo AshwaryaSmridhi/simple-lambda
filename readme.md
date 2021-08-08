@@ -50,7 +50,7 @@ aws ssm put-parameter \
     --name "<NAME>" \
     --value "<VALUE>" \
     --type "SecureString"
-    --override
+    --overwrite
 ```
 
 List parameters 

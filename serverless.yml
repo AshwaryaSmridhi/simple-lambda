@@ -1,8 +1,5 @@
 service: simple-project
 
-plugins:
-  - serverless-iam-roles-per-function
-
 provider:
   name: aws
   runtime: nodejs14.x
@@ -11,22 +8,16 @@ provider:
   region: ap-southeast-2
 
 functions: 
-  check-valid-string:
-    handler: src/handlers/check-valid-string/check-valid-string.handler
+  generate-dog-name:
+    handler: src/handlers/generate-dog-name/generate-dog-name.handler
     events: 
       - http: 
-          path: check/dog/breed/{breed}
+          path: generate/{breed}/name
           method: get
           cors: true
   
   slack-notifications: 
     handler: src/handlers/slack-notification/slack-notification.handler
-    iamRoleStatements:
-      - Effect: Allow
-        Action:
-          - sns:Publish
-        Resource:
-          - Ref: NotifySlackSns
     environment: 
       SLACK_WEBHOOK_URL: ${ssm:/error-slack-webhook-url~true} #Make sure to create the secret first. Note true means you want to decrypt value
     events: 
@@ -42,25 +33,17 @@ resources:
       Properties: 
         TopicName: ${self:service}-${self:provider.stage}-NotifySlackSns
 
-    CheckValidStringErrorFilter: 
-      Type: AWS::Logs::MetricFilter
-      Properties:
-        LogGroupName:
-          Ref: 'CheckDashvalidDashstringLogGroup'
-        FilterPattern: '{$.level = "error"}'
-        MetricTransformations:
-          -
-            MetricValue: '1'
-            MetricNamespace: 'LogMetrics'
-            MetricName: '${self:service}-${self:provider.stage}-CheckValidStringError'
-
     CheckValidStringErrorAlarm:
       Type: AWS::CloudWatch::Alarm
       Properties:
-        AlarmName: ${self:service}-${self:provider.stage}-CheckValidStringError
+        AlarmName: ${self:service}-${self:provider.stage}-GenerateDogName
         AlarmDescription: Lambda alarm
-        Namespace: LogMetrics
-        MetricName: ${self:service}-${self:provider.stage}-CheckValidStringError
+        Namespace: AWS/Lambda
+        MetricName: Errors
+        Dimensions:
+          - Name: FunctionName
+            Value: 
+              Ref: GenerateDashdogDashnameLambdaFunction
         Statistic: Sum
         ComparisonOperator: GreaterThanThreshold
         Threshold: 0
@@ -68,3 +51,30 @@ resources:
         EvaluationPeriods: 1
         AlarmActions:
           - Ref: NotifySlackSns
+
+    # CheckValidStringErrorFilter: 
+    #   Type: AWS::Logs::MetricFilter
+    #   Properties:
+    #     LogGroupName:
+    #       Ref: 'CheckDashvalidDashstringLogGroup'
+    #     FilterPattern: '{$.level = "error"}'
+    #     MetricTransformations:
+    #       -
+    #         MetricValue: '1'
+    #         MetricNamespace: 'LogMetrics'
+    #         MetricName: '${self:service}-${self:provider.stage}-CheckValidStringError'
+
+    # CheckValidStringErrorAlarm:
+    #   Type: AWS::CloudWatch::Alarm
+    #   Properties:
+    #     AlarmName: ${self:service}-${self:provider.stage}-CheckValidStringError
+    #     AlarmDescription: Lambda alarm
+    #     Namespace: LogMetrics
+    #     MetricName: ${self:service}-${self:provider.stage}-CheckValidStringError
+    #     Statistic: Sum
+    #     ComparisonOperator: GreaterThanThreshold
+    #     Threshold: 0
+    #     Period: 60
+    #     EvaluationPeriods: 1
+    #     AlarmActions:
+    #       - Ref: NotifySlackSns
