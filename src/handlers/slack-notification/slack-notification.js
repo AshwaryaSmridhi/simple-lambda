@@ -8,6 +8,8 @@ module.exports.handler = (snsEvent) => {
   });
 
   // Send the notification
+  // Print out a link to the logs 
+  // https://console.aws.amazon.com/cloudwatch/home?region=ap-southeast-2#logEventViewer:group=/aws/lambda/simple-project-dev-slack-notifications
   (async () => {
     await webhook.send({
       title: 'Error',

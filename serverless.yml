@@ -33,43 +33,16 @@ resources:
       Properties: 
         TopicName: ${self:service}-${self:provider.stage}-NotifySlackSns
 
-    GenerateDogName5xxErrorAlarm:
-      Type: AWS::CloudWatch::Alarm
-      Properties:
-        AlarmName: ${self:service}-${self:provider.stage}-GenerateDogName
-        AlarmDescription: Lambda alarm
-        Namespace: AWS/ApiGateway
-        MetricName: 5XXError
-        Dimensions:
-          - Name: ApiName
-            Value: ${self:provider.stage}-${self:service}
-        Statistic: Sum
-        ComparisonOperator: GreaterThanThreshold
-        Threshold: 0
-        Period: 60
-        EvaluationPeriods: 1
-        AlarmActions:
-          - Ref: NotifySlackSns
-
-    # GenerateDogNameErrorFilter: 
-    #   Type: AWS::Logs::MetricFilter
-    #   Properties:
-    #     LogGroupName:
-    #       Ref: 'GenerateDashdogDashnameLogGroup'
-    #     FilterPattern: '{$.level = "error"}'
-    #     MetricTransformations:
-    #       -
-    #         MetricValue: '1'
-    #         MetricNamespace: 'LogMetrics'
-    #         MetricName: '${self:service}-${self:provider.stage}-GenerateDogNameError'
-
-    # GenerateDogNameErrorAlarm:
+    # GenerateDogName5xxErrorAlarm:
     #   Type: AWS::CloudWatch::Alarm
     #   Properties:
-    #     AlarmName: ${self:service}-${self:provider.stage}-GenerateDogNameError
+    #     AlarmName: ${self:service}-${self:provider.stage}-GenerateDogName
     #     AlarmDescription: Lambda alarm
-    #     Namespace: LogMetrics
-    #     MetricName: ${self:service}-${self:provider.stage}-GenerateDogNameError
+    #     Namespace: AWS/ApiGateway
+    #     MetricName: 5XXError
+    #     Dimensions:
+    #       - Name: ApiName
+    #         Value: ${self:provider.stage}-${self:service}
     #     Statistic: Sum
     #     ComparisonOperator: GreaterThanThreshold
     #     Threshold: 0
@@ -77,3 +50,30 @@ resources:
     #     EvaluationPeriods: 1
     #     AlarmActions:
     #       - Ref: NotifySlackSns
+
+    GenerateDogNameErrorFilter: 
+      Type: AWS::Logs::MetricFilter
+      Properties:
+        LogGroupName:
+          Ref: 'GenerateDashdogDashnameLogGroup'
+        FilterPattern: '{$.level = "error"}'
+        MetricTransformations:
+          -
+            MetricValue: '1'
+            MetricNamespace: 'LogMetrics'
+            MetricName: '${self:service}-${self:provider.stage}-GenerateDogNameError'
+
+    GenerateDogNameErrorAlarm:
+      Type: AWS::CloudWatch::Alarm
+      Properties:
+        AlarmName: ${self:service}-${self:provider.stage}-GenerateDogNameError
+        AlarmDescription: Lambda alarm
+        Namespace: LogMetrics
+        MetricName: ${self:service}-${self:provider.stage}-GenerateDogNameError
+        Statistic: Sum
+        ComparisonOperator: GreaterThanThreshold
+        Threshold: 0
+        Period: 60
+        EvaluationPeriods: 1
+        AlarmActions:
+          - Ref: NotifySlackSns
