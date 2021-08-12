@@ -38,7 +38,7 @@ Create encrypted parameter
 ```
 aws ssm put-parameter \
     --profile <PROFILE_NAME>
-    --name "<NAME>" \
+    --name "error-slack-webhook-url" \
     --value "<VALUE>" \
     --type "SecureString"
 ```
