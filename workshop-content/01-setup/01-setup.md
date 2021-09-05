@@ -50,16 +50,22 @@ As we're running commands via the command line that will allow you to deploy AWS
 
 Here's install instructions for all operating systems: [How to install the AWS CLI 2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
-Here's the instructions on how to authenticate via your command line: NOTE: you'll need to get some details from the AWS web console that'll need to be copy and pasted for this to work [AWS instructions on how to configure your command line](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config)
+### Here's the instructions on how to authenticate via your command line: 
+***
+**NOTE** you'll need to get some details from the AWS web console that'll need to be copy and pasted for this to work [AWS instructions on how to configure your command line](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config)
 
 It'll look something like this:
 
-aws configure
+`aws configure`
+
+If you have multiple AWS accounts, configure with a profile name
+`aws configure --profile <profile-name>`
+
 Then following the prompts you need to provide:
 
 * AWS Access Key ID
-* AWS Secret Access Key
-* Default region name (for Australia, choose ap-southeast-2)
+* AWS Secret Access Key 
+* Default region name (for Australia, choose `ap-southeast-2`)
 * Default output format (you can just choose nothing)
 
 <br/> 
