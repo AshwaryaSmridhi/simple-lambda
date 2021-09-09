@@ -2,7 +2,7 @@
 This section will cover the key concepts we're going to be referencing throughout the workshop.
 
 - [Cloud computing & AWS](#what-is-cloud-computing-and-aws)
-    - API gateway <TO DO: add notes for these sections>
+    - API gateway
     - Lambda
     - Cloudwatch
     - SNS
@@ -26,6 +26,12 @@ This section will cover the key concepts we're going to be referencing throughou
 There's heaps of cloud technology providers out there and `AWS` is just one of them. Other products include: Google Cloud Platform, Microsoft Azure, Alibaba Cloud and many more.
 
 <br/>
+
+Services AWS offers that we will be using this workshop are: 
+- [API gateway](https://aws.amazon.com/api-gateway/)
+- [Lambda](https://aws.amazon.com/lambda/)
+- [Cloudwatch](https://aws.amazon.com/cloudwatch/)
+- [SNS](https://aws.amazon.com/sns/)
 
 ***
 ## What is event driven architecture
