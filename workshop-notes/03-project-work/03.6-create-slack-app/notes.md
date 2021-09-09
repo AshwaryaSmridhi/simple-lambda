@@ -1,1 +1,0 @@
-Talk about creating a Slack app

@@ -1,1 +1,0 @@
-Talk about the difference in sm and ssm and creating a slack lambda.

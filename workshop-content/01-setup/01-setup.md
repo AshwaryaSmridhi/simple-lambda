@@ -1,18 +1,38 @@
 # Set Up
 
 In this section we will spend sometime setting up our environments before getting started.
-1. Clone this repo
-2. Sign in to your AWS Account
-3. Install the AWS CLI and auth via the command line
-4. Install serverless globally
-5. Open this project in the code editor of your choice
+
+1. [Clone this repo](#clone-this-repo)
+2. [Sign in to your AWS Account](#sign-in-to-your-aws-account)
+3. [Install the AWS CLI and auth via the command line](#install-the-aws-cli-and-auth-via-the-command-line) 
+4. [Install serverless globally](#install-serverless-globally)
+5. [Open this project in the code editor of your choice](#code-editor)
+
+<br /> 
+
+***
 
 ## Clone this repo
-Run `git clone git@github.com:AshwaryaSmridhi/simple-lambda.git` to clone this repo.<TODO: Add correct repo link>
+***
+Clone this repo. You're going to make it your own and make edits. It's yours to keep and play around.
 
-If you don't have a github account, please download the zip<TODO: Add link here>.
+Choose a directory where you'd like to clone this repo to (it could even just be your desktop)
 
+Run the following in your command line
+
+`git clone git@github.com:AshwaryaSmridhi/simple-lambda.git`
+
+<TODO: Add correct repo link>
+
+If you don't have a github account, please download the zip by going to the github link, clicking on the green `Code` dropdown button and selecting the `Download ZIP` link. 
+
+<TODO: Add link here>.
+
+<br/> 
+
+***
 ## Sign in to your AWS Account
+***
 If you don't already have one, you'll have to set up a personal AWS account. If you don't have one, having an AWS account is key if you intend on continuing your AWS learning journey after this workshop.
 
 * If you DO have an account, log in (preferably not as root and you've set up a user via IAM that has permissions to deploy resources). If you have surpassed the free tier we will give you a $50 AWS voucher.
@@ -21,28 +41,45 @@ If you don't already have one, you'll have to set up a personal AWS account. If 
 
 * If you DONT have an account, go [HERE](https://aws.amazon.com/) to create one, you'll need a credit card - Don't worry no cost will be incured today. 
 
-## Install the AWS CLI and auth via the command line
+<br/> 
 
+***
+## Install the AWS CLI and auth via the command line
+***
 As we're running commands via the command line that will allow you to deploy AWS resources, you need to authenticate to your personal AWS via the command line.
 
 Here's install instructions for all operating systems: [How to install the AWS CLI 2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
-Here's the instructions on how to authenticate via your command line: NOTE: you'll need to get some details from the AWS web console that'll need to be copy and pasted for this to work [AWS instructions on how to configure your command line](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config)
+### Here's the instructions on how to authenticate via your command line: 
+***
+**NOTE** you'll need to get some details from the AWS web console that'll need to be copy and pasted for this to work [AWS instructions on how to configure your command line](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config)
 
 It'll look something like this:
 
-aws configure
+`aws configure`
+
+If you have multiple AWS accounts, configure with a profile name
+`aws configure --profile <profile-name>`
+
 Then following the prompts you need to provide:
 
 * AWS Access Key ID
-* AWS Secret Access Key
-* Default region name (for Australia, choose ap-southeast-2)
+* AWS Secret Access Key 
+* Default region name (for Australia, choose `ap-southeast-2`)
 * Default output format (you can just choose nothing)
 
+<br/> 
+
+***
 ## Install serverless globally
+***
 We are deploying the lambda using [serverless](https://www.serverless.com/framework/docs/). To install serverless via npm simply run `npm install -g serverless`. 
 
-## Open this project in the code editor of your choice
+<br/> 
+
+***
+## Code editor
+***
 We are going to make a new lambda and create alarms. To do this, it's best to use a code editor.
 
 There's lots of free versions, here's a few to pick from if you don't already have one:
@@ -52,4 +89,7 @@ There's lots of free versions, here's a few to pick from if you don't already ha
 
 Here is an even longer [list](https://hackr.io/blog/web-development-ide).
 
-# NEXT SECTION - Key Concepts 👉🏽<TODO Add link>
+<br/> 
+<br/> 
+
+# [NEXT SECTION - Key Concepts 👉🏽](../02-key-concepts/02-key-concepts.md)

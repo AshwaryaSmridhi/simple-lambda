@@ -33,7 +33,7 @@ module.exports.handler = (event, context, callback) => {
       statusCode: 500,
       body: JSON.stringify({
         error: {
-          message: err
+          message: err.message
         }
       })
     }));
