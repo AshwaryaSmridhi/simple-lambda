@@ -7,13 +7,13 @@ In this section we will spend sometime setting up our environments before gettin
 3. [Install the AWS CLI and auth via the command line](#install-the-aws-cli-and-auth-via-the-command-line) 
 4. [Install serverless globally](#install-serverless-globally)
 5. [Open this project in the code editor of your choice](#code-editor)
+6. [Join DevopsGirls slack workspace](#slack-workspace)
 
 <br /> 
 
 ***
 
 ## Clone this repo
-***
 Clone this repo. You're going to make it your own and make edits. It's yours to keep and play around.
 
 Choose a directory where you'd like to clone this repo to (it could even just be your desktop)
@@ -32,7 +32,6 @@ If you don't have a github account, please download the zip by going to the gith
 
 ***
 ## Sign in to your AWS Account
-***
 If you don't already have one, you'll have to set up a personal AWS account. If you don't have one, having an AWS account is key if you intend on continuing your AWS learning journey after this workshop.
 
 * If you DO have an account, log in (preferably not as root and you've set up a user via IAM that has permissions to deploy resources). If you have surpassed the free tier we will give you a $50 AWS voucher.
@@ -45,7 +44,6 @@ If you don't already have one, you'll have to set up a personal AWS account. If 
 
 ***
 ## Install the AWS CLI and auth via the command line
-***
 As we're running commands via the command line that will allow you to deploy AWS resources, you need to authenticate to your personal AWS via the command line.
 
 Here's install instructions for all operating systems: [How to install the AWS CLI 2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
@@ -70,16 +68,26 @@ Then following the prompts you need to provide:
 
 <br/> 
 
+
+***
+## Install node, npm and yarn
+* Run `node -v` to check if you have node installed.
+* Run `npm -v` to check if you have npm installed.
+* Run `yarn -v` to check if you have yarn installed.
+
+if you have everything installed then go to the [Install serverless globally](#install-serverless-globally), otherwise keep reading through.
+* To install node and npm go to https://nodejs.org/en/download/.
+* To install yarn, execute `npm install --global yarn`
+<br/> 
+
 ***
 ## Install serverless globally
-***
 We are deploying the lambda using [serverless](https://www.serverless.com/framework/docs/). To install serverless via npm simply run `npm install -g serverless`. 
 
 <br/> 
 
 ***
 ## Code editor
-***
 We are going to make a new lambda and create alarms. To do this, it's best to use a code editor.
 
 There's lots of free versions, here's a few to pick from if you don't already have one:
@@ -88,6 +96,13 @@ There's lots of free versions, here's a few to pick from if you don't already ha
 * [Sublime Text 3](https://www.sublimetext.com/3)
 
 Here is an even longer [list](https://hackr.io/blog/web-development-ide).
+
+<br/> 
+
+***
+## Join DevopsGirls slack workspace
+We will be using the DevOpsGirls workspace to send errors, the link is below:
+https://join.slack.com/t/devopsgirls/shared_invite/zt-w66ojips-MloOZFmE77ylx_m71awLLw
 
 <br/> 
 <br/> 
